@@ -452,6 +452,15 @@ Connection.prototype.getDescribe = function(data, callback) {
   return this._apiRequest(opts, opts.callback);
 };
 
+Connection.prototype.getDescribeLayouts = function(data, callback) {
+  var opts = this._getOpts(data, callback, {
+    singleProp: 'type'
+  });
+  opts.resource = '/sobjects/' + opts.type + '/describe/layouts/' + (opts.recordTypeId ? opts.recordTypeId : '');
+  opts.method = 'GET';
+  return this._apiRequest(opts, opts.callback);
+};
+
 Connection.prototype.getLimits = function(data, callback) {
   var opts = this._getOpts(data, callback, {
     singleProp: 'type'
